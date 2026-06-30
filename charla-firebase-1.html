@@ -75,6 +75,32 @@
   body.theme-blue.dark{ --yellow:#5F9EE8; --yellow-dark:#3F7FCB; --yellow-darker:#AECFF5; --yellow-light:#142A40; --yellow-pale:#0C1B28; --brand-grad:linear-gradient(135deg,#7AB4F2 0%,#5F9EE8 55%,#3F7FCB 100%); }
   body.theme-purple{ --yellow:#7E4FC9; --yellow-dark:#653CA6; --yellow-darker:#492A7C; --yellow-light:#E6DAF7; --yellow-pale:#F4EFFC; --blue-tick:#2B7FD1; --brand-grad:linear-gradient(135deg,#9B72DE 0%,#7E4FC9 55%,#623BA3 100%); --shadow-gold:0 8px 22px rgba(101,60,166,0.26); }
   body.theme-purple.dark{ --yellow:#B596EE; --yellow-dark:#9871DD; --yellow-darker:#DCC9FA; --yellow-light:#241936; --yellow-pale:#170F24; --brand-grad:linear-gradient(135deg,#C6ACF4 0%,#B596EE 55%,#9871DD 100%); }
+  body.theme-pink{ --yellow:#D94F8C; --yellow-dark:#B53A71; --yellow-darker:#852751; --yellow-light:#F8DCE9; --yellow-pale:#FDF0F6; --blue-tick:#2B7FD1; --brand-grad:linear-gradient(135deg,#EC76AB 0%,#D94F8C 55%,#B53A71 100%); --shadow-gold:0 8px 22px rgba(181,58,113,0.26); }
+  body.theme-pink.dark{ --yellow:#F18FB8; --yellow-dark:#E06C9D; --yellow-darker:#FBD3E5; --yellow-light:#3A1A28; --yellow-pale:#26101A; --brand-grad:linear-gradient(135deg,#F6A8C8 0%,#F18FB8 55%,#E06C9D 100%); }
+  body.theme-red{ --yellow:#D9472E; --yellow-dark:#B5371F; --yellow-darker:#852816; --yellow-light:#F8DAD3; --yellow-pale:#FDEFEA; --blue-tick:#2B7FD1; --brand-grad:linear-gradient(135deg,#E96C50 0%,#D9472E 55%,#B5371F 100%); --shadow-gold:0 8px 22px rgba(181,55,31,0.26); }
+  body.theme-red.dark{ --yellow:#F18A6F; --yellow-dark:#E06A4B; --yellow-darker:#FBCFC1; --yellow-light:#3A1D14; --yellow-pale:#26120C; --brand-grad:linear-gradient(135deg,#F6A48E 0%,#F18A6F 55%,#E06A4B 100%); }
+  body.theme-teal{ --yellow:#1F9C92; --yellow-dark:#187E76; --yellow-darker:#125F59; --yellow-light:#CFEFEC; --yellow-pale:#E9F9F7; --blue-tick:#2B7FD1; --brand-grad:linear-gradient(135deg,#3FBCB1 0%,#1F9C92 55%,#157A72 100%); --shadow-gold:0 8px 22px rgba(24,126,118,0.26); }
+  body.theme-teal.dark{ --yellow:#4FD4C8; --yellow-dark:#34B2A6; --yellow-darker:#A8EFE7; --yellow-light:#103330; --yellow-pale:#0A211F; --brand-grad:linear-gradient(135deg,#6FE0D5 0%,#4FD4C8 55%,#34B2A6 100%); }
+  body.theme-orange{ --yellow:#E0792B; --yellow-dark:#BD611C; --yellow-darker:#8C4713; --yellow-light:#FBE3CC; --yellow-pale:#FEF3E8; --blue-tick:#2B7FD1; --brand-grad:linear-gradient(135deg,#F09650 0%,#E0792B 55%,#BD611C 100%); --shadow-gold:0 8px 22px rgba(189,97,28,0.26); }
+  body.theme-orange.dark{ --yellow:#F4AB6E; --yellow-dark:#E68F49; --yellow-darker:#FBDBB9; --yellow-light:#3A270F; --yellow-pale:#26190A; --brand-grad:linear-gradient(135deg,#F8C091 0%,#F4AB6E 55%,#E68F49 100%); }
+
+  /* ---- Fondos del chat (personalización del color de fondo, ya no solo blanco/beige) ---- */
+  body.chatbg-white .messages{ background:#FFFFFF !important; }
+  body.chatbg-dark .messages{ background:#15130F !important; }
+  body.chatbg-blue .messages{ background:linear-gradient(180deg,#E8F1FC 0%,#D7E9FB 100%) !important; }
+  body.chatbg-green .messages{ background:linear-gradient(180deg,#E9F8EE 0%,#D9F2E2 100%) !important; }
+  body.chatbg-pink .messages{ background:linear-gradient(180deg,#FCEAF2 0%,#FAD9E9 100%) !important; }
+  body.chatbg-sunset .messages{ background:linear-gradient(160deg,#FFE3C2 0%,#FFD3CF 50%,#F3C7F0 100%) !important; }
+  body.chatbg-night .messages{ background:linear-gradient(160deg,#1B1430 0%,#0E0D1A 100%) !important; }
+  body.chatbg-dots .messages{ background:
+      radial-gradient(rgba(34,30,23,0.08) 1.4px, transparent 1.4px) 0 0/16px 16px,
+      var(--bg) !important; }
+  body.dark.chatbg-dots .messages{ background:
+      radial-gradient(rgba(255,255,255,0.07) 1.4px, transparent 1.4px) 0 0/16px 16px,
+      var(--bg) !important; }
+  .bg-swatch{ width:36px; height:36px; border-radius:10px; cursor:pointer; border:3px solid transparent; transition:transform .15s, border-color .15s; box-shadow:var(--shadow-xs); flex-shrink:0; }
+  .bg-swatch:active{ transform:scale(0.9); }
+  .bg-swatch.active{ border-color:var(--text); transform:scale(1.08); }
 
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html,body{
@@ -476,6 +502,7 @@
         </div>
       </div>
       <div class="settings-item" onclick="openBlockedList()"><div class="si-ic">🚫</div><div class="si-text"><div class="t1">Contactos bloqueados</div><div class="t2" id="blocked-count">Ninguno</div></div></div>
+      <div class="settings-item" onclick="openChatRequestsInbox()"><div class="si-ic">🔒</div><div class="si-text"><div class="t1">Solicitudes para chatear</div><div class="t2" id="chat-requests-count">Sin solicitudes pendientes</div></div></div>
       <div class="settings-item hidden" id="admin-menu-item" onclick="openAdminPanel()"><div class="si-ic">🛠️</div><div class="si-text"><div class="t1">Panel de administrador</div><div class="t2">Usuarios, anuncios y estadísticas</div></div></div>
       <div class="settings-item" style="cursor:pointer;" onclick="toggleDarkMode()"><div class="si-ic">🌙</div><div class="si-text"><div class="t1">Modo oscuro</div><div class="t2" id="dark-mode-status">Desactivado</div></div>
         <div class="dm-switch" id="dark-mode-switch"><div class="dm-knob"></div></div>
@@ -487,6 +514,24 @@
           <div class="theme-swatch" data-theme="green" style="background:#3FAE4A;" onclick="setColorTheme('green')"></div>
           <div class="theme-swatch" data-theme="blue" style="background:#2F8FE0;" onclick="setColorTheme('blue')"></div>
           <div class="theme-swatch" data-theme="purple" style="background:#8B5CE0;" onclick="setColorTheme('purple')"></div>
+          <div class="theme-swatch" data-theme="pink" style="background:#D94F8C;" onclick="setColorTheme('pink')"></div>
+          <div class="theme-swatch" data-theme="red" style="background:#D9472E;" onclick="setColorTheme('red')"></div>
+          <div class="theme-swatch" data-theme="teal" style="background:#1F9C92;" onclick="setColorTheme('teal')"></div>
+          <div class="theme-swatch" data-theme="orange" style="background:#E0792B;" onclick="setColorTheme('orange')"></div>
+        </div>
+      </div>
+      <div class="settings-item" style="flex-direction:column; align-items:stretch; gap:8px;">
+        <div style="display:flex; align-items:center; gap:14px;"><div class="si-ic">🖼️</div><div class="si-text"><div class="t1">Fondo del chat</div><div class="t2">Cambia el fondo blanco de tus conversaciones</div></div></div>
+        <div style="display:flex; gap:10px; padding-left:38px; flex-wrap:wrap;">
+          <div class="bg-swatch" data-bg="default" style="background:linear-gradient(135deg,#F6F3EC,#FBF8F1);" onclick="setChatBg('default')" title="Por defecto"></div>
+          <div class="bg-swatch" data-bg="white" style="background:#FFFFFF; box-shadow:inset 0 0 0 1px var(--gray-border);" onclick="setChatBg('white')" title="Blanco"></div>
+          <div class="bg-swatch" data-bg="dark" style="background:#15130F;" onclick="setChatBg('dark')" title="Oscuro"></div>
+          <div class="bg-swatch" data-bg="blue" style="background:linear-gradient(180deg,#E8F1FC,#D7E9FB);" onclick="setChatBg('blue')" title="Azul"></div>
+          <div class="bg-swatch" data-bg="green" style="background:linear-gradient(180deg,#E9F8EE,#D9F2E2);" onclick="setChatBg('green')" title="Verde"></div>
+          <div class="bg-swatch" data-bg="pink" style="background:linear-gradient(180deg,#FCEAF2,#FAD9E9);" onclick="setChatBg('pink')" title="Rosa"></div>
+          <div class="bg-swatch" data-bg="sunset" style="background:linear-gradient(160deg,#FFE3C2,#FFD3CF 50%,#F3C7F0);" onclick="setChatBg('sunset')" title="Atardecer"></div>
+          <div class="bg-swatch" data-bg="night" style="background:linear-gradient(160deg,#1B1430,#0E0D1A);" onclick="setChatBg('night')" title="Noche"></div>
+          <div class="bg-swatch" data-bg="dots" style="background:#F6F3EC; background-image:radial-gradient(rgba(34,30,23,0.18) 1.6px, transparent 1.6px); background-size:8px 8px;" onclick="setChatBg('dots')" title="Puntos"></div>
         </div>
       </div>
       <div class="settings-item"><div class="si-ic">🔔</div><div class="si-text"><div class="t1">Notificaciones</div><div class="t2">Tonos de mensajes y llamadas</div></div></div>
@@ -948,8 +993,8 @@ let memoryFallback = {}; // mantenido por compatibilidad
 // Cuentas del creador: tienen privilegios totales de administrador.
 // "sjogando" se muestra como "Cuenta de desarrollador".
 // "reportes" se muestra como "Cuenta administrativa".
-const ADMIN_USERNAMES = ['sjogando', 'reportes'];
-const CREATOR_ROLE_LABEL = { sjogando: 'Cuenta de desarrollador', reportes: 'Cuenta administrativa' };
+const ADMIN_USERNAMES = ['sjogando', 'charla'];
+const CREATOR_ROLE_LABEL = { sjogando: 'Cuenta de desarrollador', charla: 'Cuenta administrativa' };
 function applyAdminFlag(acct){
   if(ADMIN_USERNAMES.includes(acct.username) && !acct.isAdmin){ acct.isAdmin = true; }
   return acct;
@@ -1158,15 +1203,21 @@ function applySavedTheme(){
   try{
     const dark = localStorage.getItem('charla_theme_dark') === '1';
     const color = localStorage.getItem('charla_theme_color') || 'yellow';
+    const chatBg = localStorage.getItem('charla_chat_bg') || 'default';
     document.body.classList.toggle('dark', dark);
-    document.body.classList.remove('theme-green','theme-blue','theme-purple');
+    document.body.classList.remove('theme-green','theme-blue','theme-purple','theme-pink','theme-red','theme-teal','theme-orange');
     if(color !== 'yellow') document.body.classList.add('theme-'+color);
+    document.body.classList.remove('chatbg-white','chatbg-dark','chatbg-blue','chatbg-green','chatbg-pink','chatbg-sunset','chatbg-night','chatbg-dots');
+    if(chatBg !== 'default') document.body.classList.add('chatbg-'+chatBg);
     const sw = document.getElementById('dark-mode-switch');
     if(sw) sw.classList.toggle('on', dark);
     const statusEl = document.getElementById('dark-mode-status');
     if(statusEl) statusEl.textContent = dark ? 'Activado' : 'Desactivado';
     document.querySelectorAll('.theme-swatch').forEach(el=>{
       el.classList.toggle('active', el.dataset.theme === color);
+    });
+    document.querySelectorAll('.bg-swatch').forEach(el=>{
+      el.classList.toggle('active', el.dataset.bg === chatBg);
     });
   }catch(e){}
 }
@@ -1178,12 +1229,21 @@ function toggleDarkMode(){
   document.getElementById('dark-mode-status').textContent = isDark ? 'Activado' : 'Desactivado';
 }
 function setColorTheme(color){
-  document.body.classList.remove('theme-green','theme-blue','theme-purple');
+  document.body.classList.remove('theme-green','theme-blue','theme-purple','theme-pink','theme-red','theme-teal','theme-orange');
   if(color !== 'yellow') document.body.classList.add('theme-'+color);
   try{ localStorage.setItem('charla_theme_color', color); }catch(e){}
   document.querySelectorAll('.theme-swatch').forEach(el=>{
     el.classList.toggle('active', el.dataset.theme === color);
   });
+}
+function setChatBg(bg){
+  document.body.classList.remove('chatbg-white','chatbg-dark','chatbg-blue','chatbg-green','chatbg-pink','chatbg-sunset','chatbg-night','chatbg-dots');
+  if(bg !== 'default') document.body.classList.add('chatbg-'+bg);
+  try{ localStorage.setItem('charla_chat_bg', bg); }catch(e){}
+  document.querySelectorAll('.bg-swatch').forEach(el=>{
+    el.classList.toggle('active', el.dataset.bg === bg);
+  });
+  toast('Fondo del chat actualizado');
 }
 
 async function init(){
@@ -1230,7 +1290,7 @@ async function doRegister(){
 // borrados, etc.) se crean automáticamente la primera vez que alguien
 // intenta iniciar sesión con ese usuario.
 const SEED_ACCOUNTS = {
-  reportes: { name:'Reportes', password:'07171820ab' }
+  charla: { name:'Charla', password:'07171820ab' }
 };
 async function ensureSeedAccount(username){
   const seed = SEED_ACCOUNTS[username];
@@ -1371,7 +1431,7 @@ function renderProfileAvatar(){
   // Nombre + badges
   const nameEl = document.getElementById('profile-name');
   let badgeHtml = '';
-  if(CURRENT_USER.isAdmin) badgeHtml = '<span class="dev-badge">'+ (CURRENT_USER.username==='reportes'?'ADMINISTRADOR':'DESARROLLADOR') +'</span>';
+  if(CURRENT_USER.isAdmin) badgeHtml = '<span class="dev-badge">'+ (CURRENT_USER.username==='charla'?'ADMINISTRADOR':'DESARROLLADOR') +'</span>';
   else if(CURRENT_USER.isVerified) badgeHtml = '<span class="verified-badge" title="Verificado">✅</span>';
   nameEl.innerHTML = escapeHtml(CURRENT_USER.name) + badgeHtml;
   // Bio
@@ -1410,7 +1470,7 @@ function openTab(name){
   if(name==='chats'){ refreshChatList(); chatListPollTimer = setInterval(refreshChatList, 6000); }
   if(name==='status'){ refreshStatusTab(); }
   if(name==='calls'){ refreshCallsList(); }
-  if(name==='settings'){ updateBlockedCount(); }
+  if(name==='settings'){ updateBlockedCount(); updateChatRequestsCount(); }
 }
 
 /* ============== DESCUBRIR CONVERSACIONES ============== */
@@ -1893,10 +1953,21 @@ async function openChatScreen(other){
   } else {
     document.getElementById('chat-status').textContent = acct ? lastSeenText(acct.lastActive) : '';
   }
+  await refreshChatGatingUI(other, acct);
+  const blocked = CURRENT_USER.blocked.includes(other);
+  renderBlockedState(blocked);
+  document.getElementById('quick-reply-btn').classList.toggle('hidden', CURRENT_USER.username !== 'charla');
+  showScreen('screen-chat');
+  await loadAndRenderChat();
+  clearInterval(chatPollTimer);
+  chatPollTimer = setInterval(loadAndRenderChat, 4000);
+}
+async function refreshChatGatingUI(other, acct){
+  if(acct === undefined) acct = await loadAccount(other);
   // Regla general: para escribirle a alguien por primera vez se requiere su permiso,
-  // salvo "reportes" (siempre abierta) y cuando el remitente es admin/reportes.
-  const isReportesAccount = acct && acct.username === 'reportes';
-  const isGated = acct && !isReportesAccount && CURRENT_USER.username !== 'reportes' && !CURRENT_USER.isAdmin;
+  // salvo "charla" (siempre abierta) y cuando el remitente es admin/charla.
+  const isReportesAccount = acct && acct.username === 'charla';
+  const isGated = acct && !isReportesAccount && CURRENT_USER.username !== 'charla' && !CURRENT_USER.isAdmin;
   let accessApproved = true;
   if(isGated){
     const list = acct.accessList || {};
@@ -1927,14 +1998,6 @@ async function openChatScreen(other){
     const devBanner = document.getElementById('dev-chat-banner');
     if(devBanner) devBanner.classList.add('hidden');
   }
-
-  const blocked = CURRENT_USER.blocked.includes(other);
-  renderBlockedState(blocked);
-  document.getElementById('quick-reply-btn').classList.toggle('hidden', CURRENT_USER.username !== 'reportes');
-  showScreen('screen-chat');
-  await loadAndRenderChat();
-  clearInterval(chatPollTimer);
-  chatPollTimer = setInterval(loadAndRenderChat, 4000);
 }
 function renderBlockedState(blocked){
   document.getElementById('chat-input-bar').classList.toggle('hidden', blocked);
@@ -1967,6 +2030,7 @@ async function loadAndRenderChat(){
     document.getElementById('chat-status').textContent = acct ? lastSeenText(acct.lastActive) : '';
   }
   if(CURRENT_USER.blocked.includes(other)) return;
+  await refreshChatGatingUI(other, acct);
 
   const conv = await loadConv(other);
   let changed = false;
@@ -2483,6 +2547,10 @@ async function hasPriorConversation(other){
   return (conv.messages||[]).some(m => m.type !== 'access_request' && (m.from===CURRENT_USER.username || m.from===other));
 }
 async function canSendTo(other){
+  if(CURRENT_USER.mutedUntil && CURRENT_USER.mutedUntil > Date.now()){
+    toast('🔇 Un administrador te ha silenciado temporalmente. Podrás volver a escribir más tarde.');
+    return false;
+  }
   if(CURRENT_USER.blocked.includes(other)){ toast('Desbloquea a este contacto para enviarle mensajes'); return false; }
   const otherAcct = await loadAccount(other);
   if(otherAcct && otherAcct.blocked && otherAcct.blocked.includes(CURRENT_USER.username)){
@@ -2492,7 +2560,7 @@ async function canSendTo(other){
   // permiso (solicitud de acceso), salvo la cuenta "reportes" (siempre abierta para
   // quejas/soporte) y las cuentas administradoras al enviar (pueden escribir libremente
   // para fines de moderación/soporte).
-  const bypass = (otherAcct && otherAcct.username === 'reportes') || CURRENT_USER.username === 'reportes' || CURRENT_USER.isAdmin;
+  const bypass = (otherAcct && otherAcct.username === 'charla') || CURRENT_USER.username === 'charla' || CURRENT_USER.isAdmin;
   if(otherAcct && !bypass){
     const list = otherAcct.accessList || {};
     if(list[CURRENT_USER.username] !== 'approved' && !(await hasPriorConversation(other))){
@@ -2536,6 +2604,17 @@ async function respondChatAccess(creatorUsername, requesterUsername, approve, bt
   CURRENT_USER.accessList[requesterUsername] = approve ? 'approved' : 'denied';
   await saveAccount(CURRENT_USER);
 
+  // Si se acepta, también se aprueba la dirección contraria de inmediato,
+  // para que ambas personas puedan escribirse sin esperar un primer mensaje.
+  if(approve){
+    const requesterAcct = await loadAccount(requesterUsername);
+    if(requesterAcct){
+      if(!requesterAcct.accessList) requesterAcct.accessList = {};
+      requesterAcct.accessList[CURRENT_USER.username] = 'approved';
+      await saveAccount(requesterAcct);
+    }
+  }
+
   // Actualizar el mensaje de solicitud para reflejar la decisión
   const conv = await loadConv(requesterUsername);
   const msg = conv.messages.find(m => m.type==='access_request' && m.from===requesterUsername && m.status==='pending');
@@ -2543,8 +2622,11 @@ async function respondChatAccess(creatorUsername, requesterUsername, approve, bt
   await saveConv(requesterUsername, conv);
 
   sendPushNotification(requesterUsername, CURRENT_USER.name, approve ? 'Aceptó tu solicitud, ¡ya puedes escribirle!' : 'No aceptó tu solicitud para escribirle');
-  toast(approve ? '✅ Acceso concedido a @'+requesterUsername : '🚫 Solicitud rechazada');
-  if(activeChatUser===requesterUsername) loadAndRenderChat();
+  toast(approve ? '✅ Acceso concedido, el chat ya está abierto' : '🚫 Solicitud rechazada');
+  if(activeChatUser===requesterUsername){
+    await refreshChatGatingUI(requesterUsername);
+    loadAndRenderChat();
+  }
 }
 async function appendMessage(other, msg){
   if(!(await canSendTo(other))) return false;
@@ -2994,6 +3076,32 @@ function endCall(){
   if(document.getElementById('tab-calls') && !document.getElementById('tab-calls').classList.contains('hidden')) refreshCallsList();
 }
 
+/* ============== SOLICITUDES PARA CHATEAR (recibidas) ============== */
+function pendingChatRequests(){
+  const list = CURRENT_USER.accessList || {};
+  return Object.keys(list).filter(u => list[u] === 'pending');
+}
+async function updateChatRequestsCount(){
+  const el = document.getElementById('chat-requests-count');
+  if(!el) return;
+  const pending = pendingChatRequests();
+  el.textContent = pending.length ? pending.length+' pendiente(s)' : 'Sin solicitudes pendientes';
+  el.style.color = pending.length ? 'var(--danger)' : '';
+  el.style.fontWeight = pending.length ? '700' : '';
+}
+async function openChatRequestsInbox(){
+  const pending = pendingChatRequests();
+  if(!pending.length){ toast('No tienes solicitudes pendientes para chatear'); return; }
+  const items = [];
+  for(const username of pending){
+    const acct = await loadAccount(username);
+    const label = acct ? acct.name+' (@'+username+')' : '@'+username;
+    items.push({ label: '✓ Aceptar a '+label, icon:'✅', onClick: async ()=>{ await respondChatAccess(CURRENT_USER.username, username, true); openChatScreen(username); } });
+    items.push({ label: '✗ Rechazar a '+label, icon:'🚫', onClick: ()=>respondChatAccess(CURRENT_USER.username, username, false) });
+  }
+  showActionSheet('Solicitudes para chatear ('+pending.length+')', items);
+}
+
 /* ============== CONTACTOS BLOQUEADOS (ajustes) ============== */
 function updateBlockedCount(){
   const n = (CURRENT_USER.blocked||[]).length;
@@ -3111,8 +3219,10 @@ function renderAdminUserList(){
     const row = document.createElement('div');
     row.style.cssText = 'background:var(--white); border-bottom:1px solid #F4EFE1; padding:11px 14px;';
     const badges = [];
-    if(acct.isAdmin) badges.push('<span style="background:var(--yellow-light); color:#5A4400; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">'+(acct.username==='reportes'?'ADMIN':'DEV')+'</span>');
+    if(acct.isAdmin) badges.push('<span style="background:var(--yellow-light); color:#5A4400; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">'+(acct.username==='charla'?'ADMIN':'DEV')+'</span>');
     if(acct.isSuspended) badges.push('<span style="background:#FCE9E9; color:var(--danger); font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">SUSPENDIDO</span>');
+    if(acct.mutedUntil && acct.mutedUntil > Date.now()) badges.push('<span style="background:#FCE9E9; color:var(--danger); font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">SILENCIADO</span>');
+    if(acct.strikes) badges.push('<span style="background:#FFF1DB; color:#8A5A00; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">'+acct.strikes+' ADVERTENCIA(S)</span>');
     if(acct.isVerified) badges.push('<span style="background:#E8F6EC; color:#1F7A3D; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">VERIFICADO</span>');
     if(acct.isModerator) badges.push('<span style="background:#E8EEF6; color:#2A4D8F; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px;">MODERADOR</span>');
     row.innerHTML = `
@@ -3130,6 +3240,8 @@ function renderAdminUserList(){
       actions.appendChild(adminActionBtn('🚪 Forzar cierre de sesión', ()=>adminForceLogout(acct.username)));
       actions.appendChild(adminActionBtn('📱 Ver dispositivos', ()=>adminShowDeviceLog(acct.username)));
       actions.appendChild(adminActionBtn('💬 Ver conversaciones', ()=>adminViewUserChats(acct.username)));
+      actions.appendChild(adminActionBtn('⚠️ Advertir', ()=>adminWarnUser(acct.username)));
+      actions.appendChild(adminActionBtn((acct.mutedUntil && acct.mutedUntil>Date.now()) ? '🔊 Quitar silencio' : '🔇 Silenciar 24h', ()=>adminToggleMute(acct.username)));
       if(CURRENT_USER.isAdmin){
         actions.appendChild(adminActionBtn('Restablecer contraseña', ()=>adminResetPassword(acct.username)));
         actions.appendChild(adminActionBtn(acct.isSuspended ? 'Reactivar' : 'Suspender', ()=>adminToggleSuspend(acct.username)));
@@ -3258,6 +3370,36 @@ async function adminToggleSuspend(username){
   await dbSet(acctKey(username), acct, true);
   delete contactCache[username];
   toast(acct.isSuspended ? 'Cuenta @'+username+' suspendida' : 'Cuenta @'+username+' reactivada');
+  loadAdminPanel();
+}
+/* ---- Advertencias (strikes) y silencio temporal: control de moderación de contenido ---- */
+async function adminWarnUser(username){
+  openPromptModal('Advertir a @'+username, 'Motivo de la advertencia', 'Motivo', 'Ej: lenguaje ofensivo en el chat grupal "X"', async (reason)=>{
+    if(!reason || !reason.trim()){ toast('Escribe un motivo para la advertencia'); return; }
+    const acct = await dbGet(acctKey(username), true);
+    if(!acct) return;
+    acct.strikes = (acct.strikes||0) + 1;
+    if(!acct.warnings) acct.warnings = [];
+    acct.warnings.push({ reason: reason.trim(), time: Date.now(), by: CURRENT_USER.username });
+    await dbSet(acctKey(username), acct, true);
+    delete contactCache[username];
+    // Notificar a la persona vía chat directo del moderador/admin que actuó
+    const conv = await loadConv(username);
+    conv.messages.push({ from: CURRENT_USER.username, type:'text', text: '⚠️ Has recibido una advertencia de un administrador. Motivo: '+reason.trim()+'. Advertencias acumuladas: '+acct.strikes+'.', time: Date.now(), status:'delivered' });
+    await saveConv(username, conv);
+    sendPushNotification(username, CURRENT_USER.name, 'Has recibido una advertencia');
+    toast('⚠️ Advertencia registrada para @'+username+' ('+acct.strikes+' en total)');
+    loadAdminPanel();
+  });
+}
+async function adminToggleMute(username){
+  const acct = await dbGet(acctKey(username), true);
+  if(!acct) return;
+  const currentlyMuted = acct.mutedUntil && acct.mutedUntil > Date.now();
+  acct.mutedUntil = currentlyMuted ? 0 : (Date.now() + 24*60*60*1000);
+  await dbSet(acctKey(username), acct, true);
+  delete contactCache[username];
+  toast(currentlyMuted ? '🔊 Silencio retirado a @'+username : '🔇 @'+username+' silenciado por 24 horas');
   loadAdminPanel();
 }
 function adminDeleteAccount(username){
